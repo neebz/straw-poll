@@ -1,5 +1,5 @@
 class PollController < ApplicationController
-	
+	respond_to :json, except: [:index]
 	
 	def index
 		
