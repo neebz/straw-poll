@@ -1,0 +1,23 @@
+<h1>Welcome</h1>
+
+<div id="do_you_vote">
+	<button id="yes_vote"> Yes </button>
+	<button id="no_vote"> No </button>
+</div>
+
+<div id="select_constituency_div">
+	<select id="constituency_select">
+		<% @constituencies.each do |con| %>
+			<option class="constituency_class" text="<%= con.name %>" value="<%= con.id %>" />
+		<% end %>
+	</select>
+</div>
+
+<div id="select_party_div">
+	<select id="party_select">
+		<% @parties.each do |party| %>
+			<option class="party_class" text="<%= party.name %>" value="<%= party.id %>" />
+		<% end %>
+	</select>
+</div>
+
