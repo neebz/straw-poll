@@ -1,3 +1,3 @@
 Fabricator(:constituency) do
-  name "MyString"
+	name "MyString"
 end

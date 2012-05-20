@@ -14,8 +14,11 @@ class PollControllerTest < ActionController::TestCase
   end
 
   test "should post vote" do
-    post :vote, format: :json
+    assert_difference "Vote.count" do
+      post :vote, constituency_id: 1, party_id: 1, format: :json
+    end
     assert_response :success
+
   end
   
   def setup
