@@ -5,7 +5,4 @@ SurveyApp::Application.routes.draw do
 
   post "poll/vote"
 
-  get "poll/results"
-
-
 end

@@ -1,23 +1,61 @@
-<h1>Welcome</h1>
+<script type="text/javascript">
+	$(function() {
+		 init();
+	});
+</script>
 
-<div id="do_you_vote">
-	<button id="yes_vote"> Yes </button>
-	<button id="no_vote"> No </button>
+<div id="select_constituency" class="panel">
+	<div class="panel_heading"> Please select your Constituency </div>
+	<div class="question">
+		<select id="constituency_select">
+			<% @constituencies.each do |con| %>
+				<option class="constituency_class" value="<%= con.id %>"> <%= con.name %> </>
+			<% end %>
+		</select>
+	</div>
+	<div class="actions">
+		<button id="select_constituency_next">Next</button>
+	</div>
 </div>
 
-<div id="select_constituency_div">
-	<select id="constituency_select">
-		<% @constituencies.each do |con| %>
-			<option class="constituency_class" text="<%= con.name %>" value="<%= con.id %>" />
-		<% end %>
-	</select>
+<div id="do_you_vote" class="panel">
+	<div class="panel_heading"> Will you vote? </div>
+	<div class="question">
+		<button id="yes_vote"> Yes </button>
+		<button id="no_vote"> No </button>
+	</div>
 </div>
 
-<div id="select_party_div">
-	<select id="party_select">
-		<% @parties.each do |party| %>
-			<option class="party_class" text="<%= party.name %>" value="<%= party.id %>" />
-		<% end %>
-	</select>
+
+<div id="select_party" class="panel">
+	<div class="panel_heading"> Whom will you vote for? </div>
+	<div class="question">
+		<select id="party_select">
+			<% @parties.each do |party| %>
+				<option class="party_class" value="<%= party.id %>"> <%= party.name %> </>
+			<% end %>
+		</select>
+	</div>
+	<div class="actions">
+		<button id="select_party_submit">Submit</button>
+	</div>
 </div>
 
+<div id="loading" class="panel">
+	<div class="panel_heading"> Please Wait... </div>
+</div>
+
+
+<div id="result" class="panel">
+	<div class="panel_heading"> Results: How many willing to vote? </div>
+	<div class="segment">
+		National:
+		<div> Yes: <span id="nationalYes"></span></div>
+		<div> No: <span id="nationalNo"></span></div>
+	</div>
+	<div class="segment">
+		In <span id="conName"></span> Constituency: 
+		<div> Yes: <span id="conYes"></span></div>
+		<div> No: <span id="conNo"></span></div>
+	</div>
+</div>
