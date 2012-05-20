@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20120520113247) do
   end
 
   create_table "votes", :force => true do |t|
+    t.boolean  "will_vote"
     t.integer  "party_id"
     t.integer  "constituency_id"
     t.datetime "created_at",      :null => false

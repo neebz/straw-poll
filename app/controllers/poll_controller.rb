@@ -10,11 +10,10 @@ class PollController < ApplicationController
 	end
 
 	def vote
-		if params[:constituency_id] and params[:party_id]
-			@vote = Vote.create do  |v|
-				v.constituency_id =  params[:constituency_id]  
-				v.party_id = params[:party_id]
-			end
+		if params[:constituency_id] and params[:will_vote]
+			con = Constituency.find_by_id params[:constituency_id]
+			par = Party.find_by_id params[:party_id]
+			@vote = Vote.create will_vote: params[:will_vote], constituency: con, party: par
 			@vote.save
 		end
 	end

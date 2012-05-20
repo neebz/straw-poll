@@ -1,4 +1,5 @@
 Fabricator(:vote) do
-  party
-  constituency
+	will_vote false
+  	party
+  	constituency
 end
