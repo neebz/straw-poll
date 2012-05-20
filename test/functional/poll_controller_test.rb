@@ -17,7 +17,11 @@ class PollControllerTest < ActionController::TestCase
     assert_difference "Vote.count" do
       post :vote, constituency_id: 1, party_id: 1, format: :json
     end
+    hash = JSON.parse @response.body
+    p hash
     assert_response :success
+    assert_equal hash["constituency_id"], 1
+    assert_equal hash["party_id"], 1
 
   end
   
