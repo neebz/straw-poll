@@ -32,7 +32,7 @@ window.init = ->
 	         error: () ->
 	         	alert "sorry some error occurred"
 	         	$(".panel").hide();
-				$("#select_constituency").show();
+	         	$("#select_constituency").show();
 		
 	
 	$("#select_constituency_next").on "click", ->
