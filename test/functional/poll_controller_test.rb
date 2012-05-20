@@ -8,11 +8,6 @@ class PollControllerTest < ActionController::TestCase
     assert_select ".party_class", 3
   end
 
-  test "should get all results" do
-    get :results, format: :json
-    assert_response :success
-  end
-
   test "should post vote with will_vote as true" do
     assert_difference "Vote.count" do
       post :vote, will_vote: true, constituency_id: 1, party_id: 1, format: :json

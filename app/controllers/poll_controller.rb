@@ -6,9 +6,6 @@ class PollController < ApplicationController
 		@parties = Party.find :all
 	end
 
-	def results
-	end
-
 	def vote
 		if params[:constituency_id]
 			@con = Constituency.find_by_id params[:constituency_id]
