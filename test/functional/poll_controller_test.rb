@@ -13,15 +13,27 @@ class PollControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should post vote" do
+  test "should post vote with will_vote as true" do
     assert_difference "Vote.count" do
-      post :vote, will_vote: true, constituency_id: 1, party_id: 1, will_vote: true, format: :json
+      post :vote, will_vote: true, constituency_id: 1, party_id: 1, format: :json
     end
     hash = JSON.parse @response.body
     assert_response :success
     assert_equal 1, hash["vote"]["constituency_id"]
     assert_equal 1, hash["vote"]["party_id"]
     assert_equal true, hash["vote"]["will_vote"]
+
+  end
+
+  test "should post vote with will_vote as false" do
+    assert_difference "Vote.count" do
+      post :vote, will_vote: false, constituency_id: 1, format: :json
+    end
+    hash = JSON.parse @response.body
+    assert_response :success
+    assert_equal 1, hash["vote"]["constituency_id"]
+    assert_equal nil, hash["vote"]["party_id"]
+    assert_equal false, hash["vote"]["will_vote"]
 
   end
   
