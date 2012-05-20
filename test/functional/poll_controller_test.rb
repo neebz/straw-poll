@@ -19,9 +19,12 @@ class PollControllerTest < ActionController::TestCase
     end
     hash = JSON.parse @response.body
     assert_response :success
-    assert_equal 1, hash["vote"]["constituency_id"]
-    assert_equal 1, hash["vote"]["party_id"]
-    assert_equal true, hash["vote"]["will_vote"]
+    
+    assert_equal 1, hash["results"]["national"]["yes"]
+    assert_equal 0, hash["results"]["national"]["no"]
+    assert_equal 1, hash["results"]["constituency"]["yes"]
+    assert_equal 0, hash["results"]["constituency"]["no"]
+    assert_equal 1, hash["constituency"]["id"]
 
   end
 
@@ -31,9 +34,12 @@ class PollControllerTest < ActionController::TestCase
     end
     hash = JSON.parse @response.body
     assert_response :success
-    assert_equal 1, hash["vote"]["constituency_id"]
-    assert_equal nil, hash["vote"]["party_id"]
-    assert_equal false, hash["vote"]["will_vote"]
+
+    assert_equal 0, hash["results"]["national"]["yes"]
+    assert_equal 1, hash["results"]["national"]["no"]
+    assert_equal 0, hash["results"]["constituency"]["yes"]
+    assert_equal 1, hash["results"]["constituency"]["no"]
+    assert_equal 1, hash["constituency"]["id"]
 
   end
   
