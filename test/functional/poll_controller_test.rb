@@ -18,10 +18,9 @@ class PollControllerTest < ActionController::TestCase
       post :vote, constituency_id: 1, party_id: 1, format: :json
     end
     hash = JSON.parse @response.body
-    p hash
     assert_response :success
-    assert_equal hash["constituency_id"], 1
-    assert_equal hash["party_id"], 1
+    assert_equal 1, hash["vote"]["constituency_id"]
+    assert_equal 1, hash["vote"]["party_id"]
 
   end
   
